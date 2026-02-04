@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="doctor_shevchenko" model="hr.hospital.doctor">
+            <field name="name">Shevchenko Olena Ivanivna</field>
+            <field name="specialty">Therapist</field>
+            <field name="phone">+380501234567</field>
+            <field name="email">shevchenko@hospital.local</field>
+        </record>
+
+        <record id="doctor_kovalenko" model="hr.hospital.doctor">
+            <field name="name">Kovalenko Andrii Petrovych</field>
+            <field name="specialty">Cardiologist</field>
+            <field name="phone">+380502345678</field>
+            <field name="email">kovalenko@hospital.local</field>
+        </record>
+
+        <record id="doctor_bondarenko" model="hr.hospital.doctor">
+            <field name="name">Bondarenko Maryna Serhiivna</field>
+            <field name="specialty">Neurologist</field>
+            <field name="phone">+380503456789</field>
+            <field name="email">bondarenko@hospital.local</field>
+        </record>
+
+    </data>
+</odoo>
