@@ -20,7 +20,7 @@ class HrHospitalDoctor(models.Model):
     )
     specialty = fields.Char(
         string="Specialty",
-        required=Truee,
+        required=True,
         tracking=True,
     )
     phone = fields.Char(
