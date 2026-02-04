@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_hospital_visit_view_form" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.form</field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="arch" type="xml">
+            <form string="Visit">
+                <header>
+                    <button name="action_schedule"
+                            string="Schedule"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_start"
+                            string="Start Visit"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state != 'scheduled'"/>
+                    <button name="action_done"
+                            string="Complete"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state != 'in_progress'"/>
+                    <button name="action_cancel"
+                            string="Cancel"
+                            type="object"
+                            invisible="state in ('done', 'cancelled')"/>
+                    <button name="action_draft"
+                            string="Reset to Draft"
+                            type="object"
+                            invisible="state != 'cancelled'"/>
+                    <field name="state"
+                           widget="statusbar"
+                           statusbar_visible="draft,scheduled,in_progress,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Visit Details">
+                            <field name="date_visit"/>
+                            <field name="patient_id"/>
+                            <field name="doctor_id"/>
+                        </group>
+                        <group string="Medical Information">
+                            <field name="disease_id"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Symptoms">
+                            <field name="symptoms"
+                                   placeholder="Describe symptoms..."/>
+                        </page>
+                        <page string="Diagnosis">
+                            <field name="diagnosis_description"
+                                   placeholder="Diagnosis details..."/>
+                        </page>
+                        <page string="Treatment">
+                            <field name="treatment"
+                                   placeholder="Prescribed treatment..."/>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes"
+                                   placeholder="Additional notes..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_hospital_visit_view_tree" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.tree</field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="arch" type="xml">
+            <tree string="Visits"
+                  decoration-info="state == 'draft'"
+                  decoration-warning="state == 'scheduled'"
+                  decoration-primary="state == 'in_progress'"
+                  decoration-success="state == 'done'"
+                  decoration-muted="state == 'cancelled'">
+                <field name="name"/>
+                <field name="date_visit"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="disease_id" optional="show"/>
+                <field name="state"
+                       widget="badge"
+                       decoration-info="state == 'draft'"
+                       decoration-warning="state == 'scheduled'"
+                       decoration-primary="state == 'in_progress'"
+                       decoration-success="state == 'done'"
+                       decoration-danger="state == 'cancelled'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_hospital_visit_action" model="ir.actions.act_window">
+        <field name="name">Visits</field>
+        <field name="res_model">hr.hospital.visit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Schedule a new visit
+            </p>
+        </field>
+    </record>
+
+</odoo>

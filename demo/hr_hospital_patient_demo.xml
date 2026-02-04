@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="patient_petrenko" model="hr.hospital.patient">
+            <field name="name">Petrenko Ivan Mykolaiovych</field>
+            <field name="date_of_birth">1985-03-15</field>
+            <field name="gender">male</field>
+            <field name="phone">+380671234567</field>
+            <field name="personal_doctor_id" ref="doctor_shevchenko"/>
+        </record>
+
+        <record id="patient_lysenko" model="hr.hospital.patient">
+            <field name="name">Lysenko Oksana Vasylivna</field>
+            <field name="date_of_birth">1992-07-22</field>
+            <field name="gender">female</field>
+            <field name="phone">+380672345678</field>
+            <field name="personal_doctor_id" ref="doctor_kovalenko"/>
+        </record>
+
+        <record id="patient_moroz" model="hr.hospital.patient">
+            <field name="name">Moroz Dmytro Oleksandrovych</field>
+            <field name="date_of_birth">1978-11-08</field>
+            <field name="gender">male</field>
+            <field name="phone">+380673456789</field>
+            <field name="personal_doctor_id" ref="doctor_bondarenko"/>
+        </record>
+
+    </data>
+</odoo>
